@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Serve page on localhost:8080",
+      "type": "shell",
+      "command": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}\\serve.ps1"
+      ],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "local-web-server",
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Serving this folder at http://localhost:8080/",
+          "endsPattern": "^Server stopped\\.$"
+        }
+      }
+    }
+  ]
+}

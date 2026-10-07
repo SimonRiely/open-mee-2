@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff0dc" />
+  <title>A Little Secret</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-container">
+    <div id="lockScreen" class="screen">
+      <div class="deco-moon">🌙</div>
+      <div class="deco-cloud cloud-upper">☁️</div>
+      <div class="deco-cloud cloud-lower-left">☁️</div>
+      <div class="deco-cloud cloud-lower-right">☁️</div>
+      <div class="deco-heart heart-right">♡</div>
+      <div class="deco-heart heart-bottom">♡</div>
+      <div class="edge-flower edge-flower-one">✿</div>
+      <div class="edge-flower edge-flower-two">✿</div>
+      <div class="edge-flower edge-flower-three">✿</div>
+
+      <div class="side-flower left">
+        <span class="stem"></span>
+        <span class="leaf"></span>
+        <span class="leaf"></span>
+        <span class="bloom"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+      </div>
+
+      <div class="side-flower right">
+        <span class="stem"></span>
+        <span class="leaf"></span>
+        <span class="leaf"></span>
+        <span class="bloom"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+      </div>
+
+      <div class="lock-icon" id="heartLock" role="img" aria-label="Heart-shaped lock and floating key">
+        <svg class="lock-art" viewBox="0 0 190 150" aria-hidden="true">
+          <path class="lock-shackle" d="M58 72V49C58 22 78 9 99 9s39 15 39 39v23" />
+          <path class="lock-body" d="M95 55C79 37 47 41 36 62c-15 29 7 59 59 90 52-31 74-61 59-90-11-21-43-25-59-7Z" />
+          <path class="lock-highlight" d="M51 68c-7 17 2 34 15 47" />
+          <path class="keyhole" d="M95 82a11 11 0 0 0-7 20v18h14v-18a11 11 0 0 0-7-20Z" />
+          <path class="break-crack" d="m98 57-12 20 13 9-14 15 15 10-5 24" />
+          <path class="lock-shard shard-left" d="m39 72 31 8-9 21 22 10-5 30c-35-21-54-41-53-60 0-4 1-7 3-10Z" />
+          <path class="lock-shard shard-right" d="m151 72-31 8 9 21-22 10 5 30c35-21 54-41 53-60 0-4-1-7-3-10Z" />
+          <g class="floating-key">
+            <path class="key-shaft" d="m119 52 42 41" />
+            <path class="key-teeth" d="m147 79 11-11m-4 18 11-11m-5 18 9-9" />
+            <circle class="key-bow" cx="115" cy="48" r="12" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="header-text">
+        <h1>From: Brix<br>For Bianca</h1>
+        <p>a little secret...</p>
+      </div>
+
+      <div class="pin-indicators" id="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+
+      <div class="keypad">
+        <button class="key" data-key="1">1</button>
+        <button class="key" data-key="2">2</button>
+        <button class="key" data-key="3">3</button>
+        <button class="key" data-key="4">4</button>
+        <button class="key" data-key="5">5</button>
+        <button class="key" data-key="6">6</button>
+        <button class="key" data-key="7">7</button>
+        <button class="key" data-key="8">8</button>
+        <button class="key" data-key="9">9</button>
+        <div class="key empty"></div>
+        <button class="key" data-key="0">0</button>
+        <button class="key delete" data-action="delete">⌫</button>
+      </div>
+    </div>
+
+    <div id="emptyFlowersPopup" class="popup-backdrop" role="dialog" aria-modal="true" aria-labelledby="emptyFlowersTitle" hidden>
+      <div class="flower-popup">
+        <div class="popup-bloom" aria-hidden="true">✿</div>
+        <div class="error-message">
+          <span class="error-emoji error-emoji-left" aria-hidden="true">😠</span>
+          <span class="error-emoji error-emoji-right" aria-hidden="true">💢</span>
+          <h2 id="emptyFlowersTitle">Hay nako Bianca, ulitin mo mali ang code grrrrrr</h2>
+          <span class="error-emoji error-emoji-bottom" aria-hidden="true">🌸</span>
+        </div>
+        <button class="btn popup-close" id="closeFlowerPopup" type="button">Aww, sorry!</button>
+      </div>
+    </div>
+
+    <div id="letterScreen">
+      <section class="letter-stage" aria-label="A letter for Bianca">
+        <img class="letter-floral-art" src="flowers.png" alt="" aria-hidden="true" />
+        <div class="letter-flower letter-flower-iris" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><b></b>
+        </div>
+        <div class="letter-flower letter-flower-daisy" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><b></b>
+        </div>
+        <div class="letter-flower letter-flower-rose" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><b></b>
+        </div>
+        <div class="letter-flower letter-flower-hydrangea" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><b></b>
+        </div>
+
+        <div class="letter-content">
+          <div class="letter-kicker" aria-hidden="true">💌 &nbsp; a little note for you &nbsp; ✨</div>
+          <h2>Hi Bianca,</h2>
+          <p>I built this from scratch just to tell you how much you mean to me. Thank you for being the best part of my days. 🌷</p>
+          <div class="letter-signoff">With lots of love, <span aria-hidden="true">💗</span></div>
+          <button class="btn" id="surpriseBtn">Click meee <span aria-hidden="true">✨</span></button>
+        </div>
+      </section>
+
+      <section class="cassette-section" id="cassetteSection" aria-label="Cassette player">
+        <header class="cassette-heading">
+          <p class="cassette-kicker">For Bianca &bull; From Brix</p>
+          <h2>Songs for you</h2>
+          <span class="cassette-orange" aria-hidden="true">🍊</span>
+          <p class="playlist-prompt" id="playlistPrompt" aria-live="polite">Listen to them all to get to your letters ✨</p>
+        </header>
+
+        <div class="cassette-hero">
+          <img class="cassette-art" src="cassette.png" alt="Watercolor cassette tape labeled songs I listen to when I think about you" />
+          <div class="cassette-art-fallback" aria-hidden="true">
+            <span>side A &bull; songs for you</span>
+            <i></i>
+          </div>
+          <div class="cassette-reels" aria-hidden="true">
+            <span class="cassette-reel cassette-reel-left"><i></i></span>
+            <span class="cassette-reel cassette-reel-right"><i></i></span>
+          </div>
+        </div>
+
+        <div class="cassette-details">
+          <div class="cassette-track-list" aria-label="Choose a song">
+            <div class="cassette-track-entry">
+              <button class="cassette-track" type="button" data-track="Pasilyo" data-artist="SunKissed Lola" data-video-src="clips/pasilyo-clip.mp4" data-start="0" data-clip-duration="60" aria-pressed="false" aria-expanded="false">
+                <span class="track-number">01</span>
+                <span class="track-copy"><strong>Pasilyo</strong><small>SunKissed Lola</small></span>
+                <span class="track-indicator" aria-hidden="true">›</span>
+              </button>
+              <div class="cassette-track-panel" hidden>
+                <div class="track-video-slot"></div>
+                <aside class="cassette-note">
+                  <span class="liner-label">Liner note</span>
+                  <h3>Dear Bianca,</h3>
+                  <div class="liner-message" aria-live="polite">
+                    <p>Whenever I hear "ikaw at ikaw," I think of you. You’re the one I want to choose every day—my palaging ikaw.</p>
+                  </div>
+                  <span class="liner-heart" aria-hidden="true">🧡</span>
+                </aside>
+              </div>
+            </div>
+            <div class="cassette-track-entry">
+              <button class="cassette-track" type="button" data-track="Balisong" data-artist="Rico Blanco" data-video-src="clips/balisong-clip.mp4" data-start="0" data-clip-duration="60" aria-pressed="false" aria-expanded="false">
+                <span class="track-number">02</span>
+                <span class="track-copy"><strong>Balisong</strong><small>Rico Blanco</small></span>
+                <span class="track-indicator" aria-hidden="true">›</span>
+              </button>
+              <div class="cassette-track-panel" hidden>
+                <div class="track-video-slot"></div>
+                <aside class="cassette-note">
+                  <span class="liner-label">Liner note</span>
+                  <h3>Dear Bianca,</h3>
+                  <div class="liner-message" aria-live="polite">
+                    <p>"Never in my life have I been more sure." Even through my overthinking and the silence after I confessed, I’m still sure about you. You make my world brighter. I meant every word, and I’ll wait for your answer without pressure.</p>
+                  </div>
+                  <span class="liner-heart" aria-hidden="true">🧡</span>
+                </aside>
+              </div>
+            </div>
+            <div class="cassette-track-entry">
+              <button class="cassette-track" type="button" data-track="Ikaw Ang Aking Mahal" data-artist="VST &amp; Co." data-video-src="clips/ikaw-ang-aking-mahal-clip.mp4" data-start="0" data-clip-duration="60" aria-pressed="false" aria-expanded="false">
+                <span class="track-number">03</span>
+                <span class="track-copy"><strong>Ikaw Ang Aking Mahal</strong><small>VST &amp; Co.</small></span>
+                <span class="track-indicator" aria-hidden="true">›</span>
+              </button>
+              <div class="cassette-track-panel" hidden>
+                <div class="track-video-slot"></div>
+                <aside class="cassette-note">
+                  <span class="liner-label">Liner note</span>
+                  <h3>Dear Bianca,</h3>
+                  <div class="liner-message" aria-live="polite">
+                    <p>When I listen to this song, it just makes me think of you. I know I don’t show it, but the lyrics are just straightforward. If you ever wonder who I love, the answer is you.</p>
+                    <p>Just wanted to reassure you while I’m waiting for your answer that my feelings are solid. You never have to guess where I stand. It’s always going to be you.</p>
+                  </div>
+                  <span class="liner-heart" aria-hidden="true">🧡</span>
+                </aside>
+              </div>
+            </div>
+            <div class="cassette-track-entry">
+              <button class="cassette-track" type="button" data-track="Mirrors" data-artist="Justin Timberlake" data-video-src="clips/mirrors-clip.mp4" data-start="0" data-clip-duration="60" aria-pressed="false" aria-expanded="false">
+                <span class="track-number">04</span>
+                <span class="track-copy"><strong>Mirrors</strong><small>Justin Timberlake</small></span>
+                <span class="track-indicator" aria-hidden="true">›</span>
+              </button>
+              <div class="cassette-track-panel" hidden>
+                <div class="track-video-slot"></div>
+                <aside class="cassette-note">
+                  <span class="liner-label">Liner note</span>
+                  <h3>Dear Bianca,</h3>
+                  <div class="liner-message" aria-live="polite">
+                    <p>When I listen to this verse, it just makes me think of you. Especially the part that says “you’re the inspiration” and wanting to see your face light up.</p>
+                    <p>I know I don’t show it like that, but you really did change me. Just like the lyrics say, I said goodbye to the old me because of you. I wanted to let you know how much you inspire me and how incredibly special you are to me.</p>
+                  </div>
+                  <span class="liner-heart" aria-hidden="true">🧡</span>
+                </aside>
+              </div>
+            </div>
+            <div class="cassette-track-entry">
+              <button class="cassette-track" type="button" data-track="Leonora" data-artist="SUGARCANE" data-video-src="clips/leonora-clip.mp4" data-start="0" data-clip-duration="60" aria-pressed="false" aria-expanded="false">
+                <span class="track-number">05</span>
+                <span class="track-copy"><strong>Leonora</strong><small>SUGARCANE</small></span>
+                <span class="track-indicator" aria-hidden="true">›</span>
+              </button>
+              <div class="cassette-track-panel" hidden>
+                <div class="track-video-slot"></div>
+                <aside class="cassette-note">
+                  <span class="liner-label">Liner note</span>
+                  <h3>Dear Bianca,</h3>
+                  <div class="liner-message" aria-live="polite">
+                    <p>When I listen to this song, it just makes me think of you. Especially the part that goes “tayo na sanang dalawa, ang siyang huli at ang umpisa.”</p>
+                    <p>I know I don’t show it like that, but I really want you hanggang dulo. Just wanted to remind you how much you mean to me and that you’re the only one I want to be with forever.</p>
+                  </div>
+                  <span class="liner-heart" aria-hidden="true">🧡</span>
+                </aside>
+              </div>
+            </div>
+            <div class="cassette-video-player" id="cassetteVideoPlayer" hidden>
+              <div class="cassette-video-frame">
+                <video
+                  id="cassetteVideo"
+                  playsinline
+                  webkit-playsinline
+                  preload="metadata"
+                  controlslist="nodownload noplaybackrate noremoteplayback"
+                  disablepictureinpicture
+                  aria-label="Selected song lyric video">
+                </video>
+                <div class="cassette-video-loading" id="cassetteVideoLoading" role="status" hidden>
+                  <span class="loading-spinner" aria-hidden="true"></span>
+                  <span id="cassetteVideoLoadingText">Getting your song ready...</span>
+                </div>
+              </div>
+              <div class="cassette-player-controls">
+                <button class="video-pause-toggle" id="videoPauseToggle" type="button" disabled aria-label="Play selected song">Play</button>
+                <p class="cassette-status" id="cassetteStatus" aria-live="polite">Choose a song to start the tape</p>
+                <button class="video-close-toggle" id="videoCloseToggle" type="button" aria-label="Close selected song">Close song</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="letters-section" id="lettersSection" aria-labelledby="lettersHeading" hidden>
+        <header class="letters-heading">
+          <p class="cassette-kicker">A few more things</p>
+          <h2 id="lettersHeading">Letters for you</h2>
+          <p class="letters-intro">Pick one to open.</p>
+        </header>
+
+        <div class="letters-grid">
+          <button class="letter-card" type="button" data-letter-dialog="letterOneDialog">
+            <span class="letter-card-number">01</span>
+            <span class="letter-card-copy"><strong>Letter One</strong><small>Open your letter</small></span>
+            <span class="letter-card-icon" aria-hidden="true">✉</span>
+          </button>
+          <button class="letter-card" type="button" data-letter-dialog="letterTwoDialog">
+            <span class="letter-card-number">02</span>
+            <span class="letter-card-copy"><strong>Letter Two</strong><small>Open your letter</small></span>
+            <span class="letter-card-icon" aria-hidden="true">✉</span>
+          </button>
+          <button class="letter-card" type="button" data-letter-dialog="letterThreeDialog">
+            <span class="letter-card-number">03</span>
+            <span class="letter-card-copy"><strong>Letter Three</strong><small>Open your letter</small></span>
+            <span class="letter-card-icon" aria-hidden="true">✉</span>
+          </button>
+        </div>
+      </section>
+
+      <dialog class="letter-dialog" id="letterOneDialog" aria-labelledby="letterOneTitle">
+        <div class="letter-dialog-paper">
+          <p class="letter-dialog-kicker">A little letter</p>
+          <h2 id="letterOneTitle">Letter One</h2>
+          <p>Your letter goes here. Replace this with your message whenever you're ready.</p>
+          <button class="btn letter-dialog-close" type="button">Close letter</button>
+        </div>
+      </dialog>
+      <dialog class="letter-dialog" id="letterTwoDialog" aria-labelledby="letterTwoTitle">
+        <div class="letter-dialog-paper">
+          <p class="letter-dialog-kicker">A little letter</p>
+          <h2 id="letterTwoTitle">Letter Two</h2>
+          <p>Your letter goes here. Replace this with your message whenever you're ready.</p>
+          <button class="btn letter-dialog-close" type="button">Close letter</button>
+        </div>
+      </dialog>
+      <dialog class="letter-dialog" id="letterThreeDialog" aria-labelledby="letterThreeTitle">
+        <div class="letter-dialog-paper">
+          <p class="letter-dialog-kicker">A little letter</p>
+          <h2 id="letterThreeTitle">Letter Three</h2>
+          <p>Your letter goes here. Replace this with your message whenever you're ready.</p>
+          <button class="btn letter-dialog-close" type="button">Close letter</button>
+        </div>
+      </dialog>
+    </div>
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <script defer src="script.js"></script>
+</body>
+</html>
